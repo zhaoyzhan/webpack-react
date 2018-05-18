@@ -34,6 +34,9 @@ class Home extends React.Component {
 
 		this.state = {};
 	}
+	componentWillMount() {
+		// console.log(this.props);
+	};
 	changeNum = (e) => {
 		// e.defaultView();
 		// console.log(num.target, name);

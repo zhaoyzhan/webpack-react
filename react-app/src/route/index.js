@@ -17,6 +17,7 @@ const RouterCon = () => (
 		<div>
 			<RouterContainer></RouterContainer>
 			<Switch>
+				<Route exact path="/" component={Home}></Route>
 				<Route path="/home" component={Home} />
 				<Route path="/car" component={Car} />
 				<Route path="/list" component={List} />

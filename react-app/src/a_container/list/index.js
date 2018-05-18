@@ -1,9 +1,7 @@
 import React from 'react';
 
 class List extends React.Component {
-	componentWillMount() {
-		console.log(this.props.from);
-	};
+	componentWillMount() {};
 	render() {
 		return (
 			<div>List</div>

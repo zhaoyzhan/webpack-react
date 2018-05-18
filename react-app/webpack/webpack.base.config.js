@@ -10,7 +10,6 @@ module.exports = {
     output: {
         path: path.join(__dirname, "../build"),
         filename: "[name].js",
-
     },
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.css', '.less', 'sass', 'scss'],
