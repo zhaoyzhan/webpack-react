@@ -20,7 +20,9 @@ const changeNum = (state, action) => {
 		products
 	} = action;
 	console.log(products);
-	return state;
+	return Object.assign({}, state, {
+		num: state.num + 1
+	});
 }
 
 const reducerFn = (state = initState, action) => {

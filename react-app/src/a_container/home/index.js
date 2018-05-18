@@ -33,14 +33,14 @@ class Home extends React.Component {
 		super(props);
 
 		this.state = {};
-		this.changeNum.bind(this);
 	}
-	changeNum() {
-		// this.props.fn.changeNum(1);
-		console.log(this.props);
+	changeNum = (e) => {
+		// e.defaultView();
+		// console.log(num.target, name);
+		this.props.fn.changeNum(1);
 	};
-	changeTitle() {
-		console.log('222');
+	changeTitle = (e) => {
+		// console.log(name);
 	};
 	render() {
 		return (
