@@ -1,6 +1,6 @@
 import React from 'react';
 
-class NewSon extends React.Component {
+class NewsSon extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -11,47 +11,86 @@ class NewSon extends React.Component {
 	componentWillMount() {
 
 	};
-	shouldComponentUpdate() {
-		return true;
+	shouldComponentUpdate(nextProps, nextState) {
+		return nextState.refresh;
+	};
+	componentWillReceiveProps(nextProps, nextState) {
+		// console.log(nextProps.numberObject);
+		// console.log(this.props.numberObject);
+		if (nextProps.numberObject !== this.props.numberObject) {
+			this.setState({
+				refresh: true
+			});
+		} else {
+			this.setState({
+				refresh: false
+			});
+		}
 	};
 	render() {
-		let {
-			num,
+		const {
+			index,
+			numberObject,
 			handleClick
 		} = this.props;
-		return (
-			<div>
-				<h2>new son</h2>
-				<p>{num}</p>
-				<button onClick={() => handleClick('new son')}>点击</button>
-			</div>
-		);
+		console.log(numberObject);
+		return <h1 style={{cursor: 'pointer'}} onClick ={() => handleClick(index)}>{numberObject.number}</h1>
 	}
 }
 
-class NewFa extends React.Component {
+class NewsFa extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			refresh: false,
-			num: 1
+			num: 1,
+			numberArray: [{
+				number: 0 /*对象中其他的属性*/
+			}, {
+				number: 1 /*对象中其他的属性*/
+			}, {
+				number: 2 /*对象中其他的属性*/
+			}]
 		};
+	};
+	shouldComponentUpdate(nextProps, nextState) {
+		return true;
 	}
-	handleClick = (title) => {
-		console.log(title)
-	}
+	handleClick = (index) => {
+		// let numberArray = this.state.numberArray;
+		// numberArray[index].number += 1;
+		// this.setState({
+		// 	numberArray
+		// });
+		let preNumberArray = this.state.numberArray;
+		//把做修改的number Object先拷贝到一个新的对象中，替换原来的对象
+		preNumberArray[index] = Object.assign({}, preNumberArray[index]);
+		//使新的number Object对象的number属性加一，旧的number Object对象属性不变
+		preNumberArray[index].number += 1;
+		this.setState({
+			numberArray: preNumberArray
+		});
+	};
 	render() {
 		let {
 			num
 		} = this.state;
 		return (
-			<div>
-				<h1>new father</h1>
-				<NewSon num={num} handleClick={this.handleClick}/>
+			<div style ={{margin:30}}>{
+				this.state.numberArray.map(
+	                (numberObject,key) => {
+		                 return <NewsSon
+		                           key = {key}
+		                           index = {key}
+		                           numberObject ={numberObject}
+		                           handleClick ={this.handleClick}/>
+		                }
+	                )
+	            }
 			</div>
 		);
 	}
 }
 
-export default NewFa;
+export default NewsFa;

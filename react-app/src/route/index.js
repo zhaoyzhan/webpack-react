@@ -10,6 +10,7 @@ import RouterContainer from '../a_container/root/index.js';
 import Home from '../a_container/home/index.js';
 import Car from '../a_container/car/index.js';
 import List from '../a_container/list/index.js';
+import News from '../a_container/new/index.js';
 
 
 const RouterCon = () => (
@@ -21,6 +22,7 @@ const RouterCon = () => (
 				<Route path="/home" component={Home} />
 				<Route path="/car" component={Car} />
 				<Route path="/list" component={List} />
+				<Route path="/news" component={News} />
 				<Route
 					exact
 				    path="*"

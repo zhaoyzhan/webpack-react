@@ -9,9 +9,11 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, "../build"),
-        filename: "[name].js",
+        // filename: "[name].js",
         // filename: "[name]-bundle.js",
         // chunkFilename: "[name]-chunk.js",
+        filename: 'static/js/[name].[chunkhash:8].bundle.js',
+        chunkFilename: 'static/js/[name]-[id].[chunkhash:8].bundle.js',
     },
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.css', '.less', 'sass', 'scss'],
@@ -27,15 +29,24 @@ module.exports = {
         }, {
             test: /\.css$/,
             use: [MiniCssExtractPlugin.loader, {
-                loader: 'css-loader'
+                loader: 'css-loader',
+                // options: {
+                //     name: 'static/css/[name].[hash:8].[ext]',
+                // }
             }],
         }, {
             test: /\.(scss|sass)$/,
             use: [
                 MiniCssExtractPlugin.loader, {
-                    loader: "css-loader" // translates CSS into CommonJS
+                    loader: "css-loader",
+                    // options: {
+                    //     name: 'static/css/[name].[hash:8].[ext]',
+                    // }
                 }, {
-                    loader: "sass-loader" // compiles Sass to CSS
+                    loader: "sass-loader", // compiles Sass to CSS
+                    // options: {
+                    //     name: 'static/css/[name].[hash:8].[ext]',
+                    // }
                 }
             ]
 
@@ -53,7 +64,14 @@ module.exports = {
         }, {
             test: /\.(svg|png|ico)$/,
             use: 'file-loader',
-        }]
+        }, {
+            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+            loader: require.resolve('url-loader'),
+            options: {
+                limit: 10000,
+                name: 'static/media/[name].[hash:8].[ext]',
+            },
+        }, ]
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -61,8 +79,8 @@ module.exports = {
             template: path.join(__dirname, "../public/index.html")
         }),
         new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[id].css"
+            filename: "static/css/[name].css",
+            chunkFilename: "static/css/[id].css"
         })
     ]
 }
