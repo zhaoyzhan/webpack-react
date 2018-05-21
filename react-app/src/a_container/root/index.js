@@ -32,6 +32,7 @@ class RouterContainer extends React.Component {
 						>car</Link>
 					</li>
 					<li className="router-main-li"><Link to="/list" replace>list</Link></li>
+					<li className="router-main-li"><Link to="/new" replace>new</Link></li>
 				</ul>
 			</div>
 		);

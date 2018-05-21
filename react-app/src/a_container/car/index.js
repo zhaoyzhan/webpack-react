@@ -27,6 +27,7 @@ class Car extends React.Component {
 	render() {
 		return (
 			<div>
+				<h1>{this.state.addTwo}</h1>
 				<button onClick={this.add.bind(this)}>添加 1</button>
 				<button onClick={this.addTwo.bind(this)}>添加 2</button>
 				<CarContent name={this.state.carContent}></CarContent>

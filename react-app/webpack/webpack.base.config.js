@@ -10,6 +10,8 @@ module.exports = {
     output: {
         path: path.join(__dirname, "../build"),
         filename: "[name].js",
+        // filename: "[name]-bundle.js",
+        // chunkFilename: "[name]-chunk.js",
     },
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.css', '.less', 'sass', 'scss'],

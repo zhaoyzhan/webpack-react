@@ -9,7 +9,7 @@ class CarContent extends React.Component {
 			name: 'carcontent',
 			tag: 1,
 			nameNum: 0,
-			refresh: true,
+			refresh: false,
 			changeValue: '',
 		};
 	}
@@ -41,7 +41,7 @@ class CarContent extends React.Component {
 		this.setState({
 			changeValue: e.target.value,
 			refresh: false
-		})
+		});
 	};
 	changeTitle() {
 		if (this.state.name !== this.state.changeValue && this.state.changeValue !== '') {
