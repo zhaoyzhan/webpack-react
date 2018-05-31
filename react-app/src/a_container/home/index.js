@@ -51,7 +51,7 @@ class Home extends React.Component {
 			<div className="home_container">
 				<h1>{this.props.title}</h1>
 				<h1>{this.props.num}</h1>
-				<img src={require("../../img/login-bg.6944511.png")} width='100' height='100' alt=""/>
+				<img src={require('../../img/img3.jpg')} alt=""/>
 				<button onClick={this.changeTitle}>dd</button>
 				<button onClick={this.changeNum}>+1</button>
 			</div>

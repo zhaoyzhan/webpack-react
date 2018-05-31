@@ -17,7 +17,7 @@ class RouterContainer extends React.Component {
 									name: 'zhangsanb'
 								}
 							}} 
-							replace
+							
 						>home</Link>
 					</li>
 					<li className="router-main-li">
@@ -28,11 +28,11 @@ class RouterContainer extends React.Component {
 									type: 'car'
 								}
 							}}
-							replace
+							
 						>car</Link>
 					</li>
-					<li className="router-main-li"><Link to="/list" replace>list</Link></li>
-					<li className="router-main-li"><Link to="/news" replace>news</Link></li>
+					<li className="router-main-li"><Link to="/list" >list</Link></li>
+					<li className="router-main-li"><Link to="/news" >news</Link></li>
 				</ul>
 			</div>
 		);

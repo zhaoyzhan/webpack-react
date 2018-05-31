@@ -1,16 +1,38 @@
 import React from 'react';
 import {
 	Route,
-	HashRouter as Router,
+	BrowserRouter as Router,
 	Redirect,
 	Switch
 } from 'react-router-dom';
+import Bundle from './bundle.js';
+
 
 import RouterContainer from '../a_container/root/index.js';
 import Home from '../a_container/home/index.js';
-import Car from '../a_container/car/index.js';
-import List from '../a_container/list/index.js';
-import News from '../a_container/new/index.js';
+// const Home = (props) => (
+// 	<Bundle load={()=> import('../a_container/home/index.js')}>
+//     	{(Home) => <Home {...props}/>}
+// 	</Bundle>
+// );
+// import Car from '../a_container/car/index.js';
+const Car = (props) => (
+	<Bundle load={()=> import('../a_container/car/index.js')}>
+    	{(Car) => <Car {...props}/>}
+	</Bundle>
+);
+// import List from '../a_container/list/index.js';
+const List = (props) => (
+	<Bundle load={()=> import('../a_container/list/index.js')}>
+    	{(List) => <List {...props}/>}
+	</Bundle>
+);
+// import News from '../a_container/new/index.js';
+const News = (props) => (
+	<Bundle load={()=> import('../a_container/new/index.js')}>
+    	{(News) => <News {...props}/>}
+	</Bundle>
+);
 
 
 const RouterCon = () => (

@@ -9,14 +9,11 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, "../build"),
-        // filename: "[name].js",
-        // filename: "[name]-bundle.js",
-        // chunkFilename: "[name]-chunk.js",
-        filename: 'static/js/[name].[chunkhash:8].bundle.js',
-        chunkFilename: 'static/js/[name]-[id].[chunkhash:8].bundle.js',
+        filename: 'static/js/[name].[hash:8].bundle.js',
+        chunkFilename: 'static/js/[name]-[id].[hash:8].bundle.js',
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.json', '.css', '.less', 'sass', 'scss'],
+        extensions: ['.js', '.jsx', '.json', '.css', '.less', '.sass', '.scss'],
     },
     performance: {
         hints: false
@@ -25,35 +22,27 @@ module.exports = {
         rules: [{
             test: /\.(js|jsx)?$/,
             exclude: /(node_modules)/,
-            loader: 'babel-loader'
+            loader: require.resolve('babel-loader')
         }, {
             test: /\.css$/,
-            use: [MiniCssExtractPlugin.loader, {
-                loader: 'css-loader',
-                // options: {
-                //     name: 'static/css/[name].[hash:8].[ext]',
-                // }
-            }],
+            // use: [MiniCssExtractPlugin.loader, {
+            //     loader: require.resolve('css-loader'),
+            // }],
+            use: ["style-loader", "css-loader"] //开发模式
         }, {
-            test: /\.(scss|sass)$/,
-            use: [
-                MiniCssExtractPlugin.loader, {
-                    loader: "css-loader",
-                    // options: {
-                    //     name: 'static/css/[name].[hash:8].[ext]',
-                    // }
-                }, {
-                    loader: "sass-loader", // compiles Sass to CSS
-                    // options: {
-                    //     name: 'static/css/[name].[hash:8].[ext]',
-                    // }
-                }
-            ]
-
+            test: /\.(sass|scss)$/,
+            // use: [
+            //     MiniCssExtractPlugin.loader, {
+            //         loader: require.resolve("css-loader"),
+            //     }, {
+            //         loader: require.resolve("sass-loader"),
+            //     }
+            // ], //生产模式
+            use: ["style-loader", "css-loader", "sass-loader"] //开发模式
         }, {
             test: /\.html$/,
             use: [{
-                loader: 'html-loader',
+                loader: require.resolve('html-loader'),
                 options: {
                     minimize: true
                 }
@@ -62,8 +51,15 @@ module.exports = {
             test: /\.(ico)$/,
             use: "raw-loader",
         }, {
-            test: /\.(svg|png|ico)$/,
-            use: 'file-loader',
+            test: /\.(svg|ico)$/,
+            use: [{
+                loader: require.resolve('file-loader'),
+                options: {
+                    limit: 10000,
+                    name: 'static/media/[name].[hash:8].[ext]',
+                },
+            }],
+
         }, {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
             loader: require.resolve('url-loader'),
@@ -79,7 +75,7 @@ module.exports = {
             template: path.join(__dirname, "../public/index.html")
         }),
         new MiniCssExtractPlugin({
-            filename: "static/css/[name].css",
+            filename: "static/css/[name].[hash:8].css",
             chunkFilename: "static/css/[id].css"
         })
     ]

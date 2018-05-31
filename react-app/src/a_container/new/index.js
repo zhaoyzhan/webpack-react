@@ -1,4 +1,5 @@
 import React from 'react';
+import './index.scss';
 
 class NewsSon extends React.Component {
 	constructor(props) {
@@ -10,6 +11,11 @@ class NewsSon extends React.Component {
 	};
 	componentWillMount() {
 
+	};
+	componentDidMount() {
+		// let con = document.getElementsByClassName('news-container')[0];
+		// let img = con.getElementsByClassName('news-con-img')[0];
+		// console.log(img);
 	};
 	shouldComponentUpdate(nextProps, nextState) {
 		return nextState.refresh;
@@ -33,7 +39,6 @@ class NewsSon extends React.Component {
 			numberObject,
 			handleClick
 		} = this.props;
-		console.log(numberObject);
 		return <h1 style={{cursor: 'pointer'}} onClick ={() => handleClick(index)}>{numberObject.number}</h1>
 	}
 }
@@ -62,6 +67,8 @@ class NewsFa extends React.Component {
 		// numberArray[index].number += 1;
 		// this.setState({
 		// 	numberArray
+		// }, () => {
+		// 	console.log(this.state.numberArray);
 		// });
 		let preNumberArray = this.state.numberArray;
 		//把做修改的number Object先拷贝到一个新的对象中，替换原来的对象
@@ -77,7 +84,9 @@ class NewsFa extends React.Component {
 			num
 		} = this.state;
 		return (
-			<div style ={{margin:30}}>{
+			<div className="news-container">
+				<img className="news-con-img" src={require('../../img/img3.jpg')} alt=""/>
+			{
 				this.state.numberArray.map(
 	                (numberObject,key) => {
 		                 return <NewsSon

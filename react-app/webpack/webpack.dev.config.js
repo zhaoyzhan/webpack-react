@@ -15,6 +15,7 @@ const webpackConfigDev = {
         // host:'0.0.0.0',
         inline: true,
         port: 8080,
+        historyApiFallback: true
     }
 }
 module.exports = merge(webpackConfigBase, webpackConfigDev);
