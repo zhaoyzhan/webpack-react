@@ -1,5 +1,8 @@
 .router-main-container {
 	// background-color: red;
+	line-height: 60px;
+    height: 60px;
+
 }
 
 .router-main-ul {
@@ -9,6 +12,8 @@
 .router-main-li {
 	float: left;
 	margin-right: 20px;
+	margin-left: 20px;
+	font-size: 18px;
 	list-style-type: none;
 	a {
 		text-decoration: none;

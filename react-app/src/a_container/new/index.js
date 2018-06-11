@@ -63,13 +63,19 @@ class NewsFa extends React.Component {
 		};
 	};
 	componentWillMount() {
+		this.mounted = true;
 		setTimeout(() => {
-			this.setState({
-				loading: false,
-				pageLoad: true,
-				refresh: true
-			});
+			if (this.mounted) {
+				this.setState({
+					loading: false,
+					pageLoad: true,
+					refresh: true
+				});
+			}
 		}, 500);
+	};
+	componentWillUnmount() {
+		this.mounted = false;
 	};
 	shouldComponentUpdate(nextProps, nextState) {
 		return nextState.refresh;
@@ -92,29 +98,31 @@ class NewsFa extends React.Component {
 			pageLoad
 		} = this.state;
 		return (
-			<Spin 
-				size="large" 
-				spinning={loading}
-				style={{textAlign: 'center', width: '100%', paddingTop: 100}}
-			>
-				{
-					pageLoad ? 
-						<div className="news-container">
-							<img className="news-con-img" src={require('../../img/img3.jpg')} alt=""/>
-						{
-							this.state.numberArray.map(
-				                (numberObject,key) => {
-					                 return <NewsSon
-					                           key = {key}
-					                           index = {key}
-					                           numberObject ={numberObject}
-					                           handleClick ={this.handleClick}/>
-					                }
-				                )
-				            }
-						</div> : null
-				}
-			</Spin>
+			<div className="main-container">
+				<Spin 
+					size="large" 
+					spinning={loading}
+					style={{textAlign: 'center', width: '100%', paddingTop: 100}}
+				>
+					{
+						pageLoad ? 
+							<div className="news-container">
+								<img className="news-con-img" src={require('../../img/img3.jpg')} alt=""/>
+							{
+								this.state.numberArray.map(
+					                (numberObject,key) => {
+						                 return <NewsSon
+						                           key = {key}
+						                           index = {key}
+						                           numberObject ={numberObject}
+						                           handleClick ={this.handleClick}/>
+						                }
+					                )
+					            }
+							</div> : null
+					}
+				</Spin>
+			</div>
 		);
 	}
 }

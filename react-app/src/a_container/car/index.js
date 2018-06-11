@@ -49,12 +49,18 @@ class Car extends React.Component {
 		};
 	}
 	componentWillMount() {
+		this.mounted = true;
 		setTimeout(() => {
-			this.setState({
-				loading: false,
-				pageLoad: true
-			});
+			if (this.mounted) {
+				this.setState({
+					loading: false,
+					pageLoad: true
+				});
+			}
 		}, 500);
+	};
+	componentWillUnmount() {
+		this.mounted = false;
 	};
 	add() {
 		this.setState({
@@ -73,24 +79,26 @@ class Car extends React.Component {
 			loading
 		} = this.state;
 		return (
-			<Spin 
-				size="large" 
-				spinning={loading}
-				style={{textAlign: 'center', width: '100%', paddingTop: 100}}
-			>
-				{	
-					pageLoad ? 
-						<div style={{background: pageLoad ? '#fff' : ''}}>
-							<h1>{this.state.addTwo}</h1>
-							<button onClick={this.add.bind(this)}>添加 1</button>
-							<button onClick={this.addTwo.bind(this)}>添加 2</button>
-							<CarContent name={this.state.carContent}></CarContent>
-							<div>
-								<CarCon />
-							</div>
-						</div> : null
-				}
-			</Spin>
+			<div className="main-container">
+				<Spin 
+					size="large" 
+					spinning={loading}
+					style={{textAlign: 'center', width: '100%', paddingTop: 100}}
+				>
+					{	
+						pageLoad ? 
+							<div style={{background: pageLoad ? '#fff' : ''}}>
+								<h1>{this.state.addTwo}</h1>
+								<button onClick={this.add.bind(this)}>添加 1</button>
+								<button onClick={this.addTwo.bind(this)}>添加 2</button>
+								<CarContent name={this.state.carContent}></CarContent>
+								<div>
+									<CarCon />
+								</div>
+							</div> : null
+					}
+				</Spin>
+			</div>
 		);
 	}
 }

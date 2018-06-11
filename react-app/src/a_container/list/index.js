@@ -11,18 +11,9 @@ class ListSon extends React.Component {
 
 		this.state = {
 			refresh: false,
-			loading: true,
-			pageLoad: false
 		};
 	};
-	componentWillMount() {
-		setTimeout(() => {
-			this.setState({
-				loading: false,
-				pageLoad: true
-			});
-		}, 500);
-	};
+	componentWillMount() {};
 	shouldComponentUpdate(nextProps, nextState) {
 		return nextState.refresh;
 	};
@@ -62,13 +53,19 @@ class List extends React.Component {
 		};
 	};
 	componentWillMount() {
+		this.mounted = true;
 		setTimeout(() => {
-			this.setState({
-				pageLoad: true,
-				loading: false,
-				refresh: true
-			});
+			if (this.mounted) {
+				this.setState({
+					pageLoad: true,
+					loading: false,
+					refresh: true
+				});
+			}
 		}, 500);
+	};
+	componentWillUnmount() {
+		this.mounted = false;
 	};
 	shouldComponentUpdate(nextProps, nextState) {
 		return nextState.refresh;
@@ -90,30 +87,32 @@ class List extends React.Component {
 			loading
 		} = this.state;
 		return (
-			<Spin 
-				size="large" 
-				spinning={loading}
-				style={{textAlign: 'center', width: '100%', paddingTop: 100}}
-			>
-				{
-					pageLoad ? 
-						<div 
-							style = {{margin:30, cursor: 'pointer'}}
-						>
-							{
-				              	this.state.numberArray.map(
-				                	(number,key) => {
-				                 		return <ListSon
-				                           key = {key}
-				                           index = {key}
-				                           number = {number}
-				                           handleClick = {this.handleClick}/>
-				                	}
-				                )
-				            }
-				        </div> : null
-			    }
-	        </Spin>
+			<div className="main-container">
+				<Spin 
+					size="large" 
+					spinning={loading}
+					style={{textAlign: 'center', width: '100%'}}
+				>
+					{
+						pageLoad ? 
+							<div 
+								style = {{margin:30, cursor: 'pointer'}}
+							>
+								{
+					              	this.state.numberArray.map(
+					                	(number,key) => {
+					                 		return <ListSon
+					                           key = {key}
+					                           index = {key}
+					                           number = {number}
+					                           handleClick = {this.handleClick}/>
+					                	}
+					                )
+					            }
+					        </div> : null
+				    }
+		        </Spin>
+		    </div>
 		);
 	}
 }

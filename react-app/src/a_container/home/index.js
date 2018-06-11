@@ -42,23 +42,28 @@ class Home extends React.Component {
 		};
 	}
 	componentDidMount() {
+		this.mounted = true;
 		setTimeout(() => {
-			this.setState({
-				loading: false,
-				pageLoad: true
-			});
+			if (this.mounted) {
+				this.setState({
+					loading: false,
+					pageLoad: true
+				});
+			}
 		}, 500);
 	}
 	componentWillMount() {
-		// console.log(this.props);
-		// console.log(document.getElementById);
+
+	};
+	componentWillUnmount() {
+		this.mounted = false;
 	};
 	changeNum = (e) => {
 		this.props.fn.changeNum(1);
 	};
 	changeTitle = (e) => {};
 	textAreaChange = (e) => {
-		let value = e.target.value
+		// let value = e.target.value
 	};
 	render() {
 		let newDefaultValue = {
@@ -87,26 +92,26 @@ class Home extends React.Component {
 			loading
 		} = this.state;
 		return (
-			<Spin 
-				size="large" 
-				spinning={loading}
-				style={{textAlign: 'center', width: '100%', paddingTop: 100}}
-			>
-				{	
-					pageLoad ? 
-						<div className="home_container" style={{background: pageLoad ? '#fff' : ''}}>
-							<h1>{this.props.title}</h1>
-							<h1>{this.props.num}</h1>
-							<img src={require('../../img/img3.jpg')} alt=""/>
-							<button onClick={this.changeTitle}>dd</button>
-							<button onClick={this.changeNum}>+1</button>
-							<textarea defaultValue={objStr} onChange={this.textAreaChange} name="" id="" cols="30" rows="10">
-							</textarea>
-							<div>
-							</div>
-						</div> : null
-				}
-			</Spin>
+			<div className="main-container">
+				<Spin 
+					size="large" 
+					spinning={loading}
+					style={{textAlign: 'center', width: '100%', paddingTop: 100}}
+				>
+					{	
+						pageLoad ? 
+							<div className="home_container" style={{background: pageLoad ? '#fff' : ''}}>
+								<h1>{this.props.title}</h1>
+								<h1>{this.props.num}</h1>
+								<img src={require('../../img/img3.jpg')} alt=""/>
+								<button onClick={this.changeTitle}>dd</button>
+								<button onClick={this.changeNum}>+1</button>
+								<textarea defaultValue={objStr} onChange={this.textAreaChange} name="" id="" cols="30" rows="10">
+								</textarea>
+							</div> : null
+					}
+				</Spin>
+			</div>
 		);
 	}
 }
