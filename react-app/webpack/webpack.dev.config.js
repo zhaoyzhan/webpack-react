@@ -7,7 +7,9 @@ const openBrowserPlugin = require('open-browser-webpack-plugin');
 const webpackConfigDev = {
     mode: 'development',
     plugins: [
-        // new openBrowserPlugin({url:"http://localhost:8080"})
+        new openBrowserPlugin({
+            url: "http://localhost:8080"
+        })
     ],
     devServer: {
         contentBase: path.join(__dirname, "../public"),

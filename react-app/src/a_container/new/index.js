@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+	Spin
+} from 'antd';
 import './index.scss';
 
 class NewsSon extends React.Component {
@@ -9,9 +12,7 @@ class NewsSon extends React.Component {
 			refresh: false
 		};
 	};
-	componentWillMount() {
-
-	};
+	componentWillMount() {};
 	componentDidMount() {
 		// let con = document.getElementsByClassName('news-container')[0];
 		// let img = con.getElementsByClassName('news-con-img')[0];
@@ -48,6 +49,8 @@ class NewsFa extends React.Component {
 		super(props);
 
 		this.state = {
+			loading: true,
+			pageLoad: false,
 			refresh: false,
 			num: 1,
 			numberArray: [{
@@ -59,45 +62,59 @@ class NewsFa extends React.Component {
 			}]
 		};
 	};
+	componentWillMount() {
+		setTimeout(() => {
+			this.setState({
+				loading: false,
+				pageLoad: true,
+				refresh: true
+			});
+		}, 500);
+	};
 	shouldComponentUpdate(nextProps, nextState) {
-		return true;
+		return nextState.refresh;
 	}
 	handleClick = (index) => {
-		// let numberArray = this.state.numberArray;
-		// numberArray[index].number += 1;
-		// this.setState({
-		// 	numberArray
-		// }, () => {
-		// 	console.log(this.state.numberArray);
-		// });
-		let preNumberArray = this.state.numberArray;
+		let preNumberArray = [...this.state.numberArray];
 		//把做修改的number Object先拷贝到一个新的对象中，替换原来的对象
 		preNumberArray[index] = Object.assign({}, preNumberArray[index]);
 		//使新的number Object对象的number属性加一，旧的number Object对象属性不变
 		preNumberArray[index].number += 1;
 		this.setState({
-			numberArray: preNumberArray
+			numberArray: preNumberArray,
+			refresh: true
 		});
 	};
 	render() {
 		let {
-			num
+			num,
+			loading,
+			pageLoad
 		} = this.state;
 		return (
-			<div className="news-container">
-				<img className="news-con-img" src={require('../../img/img3.jpg')} alt=""/>
-			{
-				this.state.numberArray.map(
-	                (numberObject,key) => {
-		                 return <NewsSon
-		                           key = {key}
-		                           index = {key}
-		                           numberObject ={numberObject}
-		                           handleClick ={this.handleClick}/>
-		                }
-	                )
-	            }
-			</div>
+			<Spin 
+				size="large" 
+				spinning={loading}
+				style={{textAlign: 'center', width: '100%', paddingTop: 100}}
+			>
+				{
+					pageLoad ? 
+						<div className="news-container">
+							<img className="news-con-img" src={require('../../img/img3.jpg')} alt=""/>
+						{
+							this.state.numberArray.map(
+				                (numberObject,key) => {
+					                 return <NewsSon
+					                           key = {key}
+					                           index = {key}
+					                           numberObject ={numberObject}
+					                           handleClick ={this.handleClick}/>
+					                }
+				                )
+				            }
+						</div> : null
+				}
+			</Spin>
 		);
 	}
 }

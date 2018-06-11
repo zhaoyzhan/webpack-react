@@ -1,0 +1,13 @@
+// .home_container {
+// 	.ant-spin {
+// 		background-color: #fff;
+// 	}
+// }
+// 	
+.ant-spin-nested-loading {
+	background: #fff;
+}
+
+.ant-spin {
+	background-color: #fff;
+}

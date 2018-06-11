@@ -8,6 +8,10 @@ import {
 	connect
 } from 'react-redux';
 
+import {
+	Spin
+} from 'antd';
+
 //本页所需action
 import * as TodoAction from '../../a_action/home_action/index.js';
 
@@ -32,29 +36,77 @@ class Home extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {};
+		this.state = {
+			loading: true,
+			pageLoad: false
+		};
+	}
+	componentDidMount() {
+		setTimeout(() => {
+			this.setState({
+				loading: false,
+				pageLoad: true
+			});
+		}, 500);
 	}
 	componentWillMount() {
 		// console.log(this.props);
-		console.log(document.getElementById);
+		// console.log(document.getElementById);
 	};
 	changeNum = (e) => {
-		// e.defaultView();
-		// console.log(num.target, name);
 		this.props.fn.changeNum(1);
 	};
-	changeTitle = (e) => {
-		// console.log(name);
+	changeTitle = (e) => {};
+	textAreaChange = (e) => {
+		let value = e.target.value
 	};
 	render() {
+		let newDefaultValue = {
+			name: 'zhangsan',
+			age: 12,
+			data: {
+				texta: 'dads'
+			}
+		};
+		let obj = {
+			'host': '',
+			'port': '',
+			'username': '',
+			'password': '',
+			data: {
+				name: 23,
+				children: [{
+					age: 22233,
+					name: 'dada'
+				}]
+			}
+		};
+		var objStr = JSON.stringify(obj, null, 4);
+		let {
+			pageLoad,
+			loading
+		} = this.state;
 		return (
-			<div className="home_container">
-				<h1>{this.props.title}</h1>
-				<h1>{this.props.num}</h1>
-				<img src={require('../../img/img3.jpg')} alt=""/>
-				<button onClick={this.changeTitle}>dd</button>
-				<button onClick={this.changeNum}>+1</button>
-			</div>
+			<Spin 
+				size="large" 
+				spinning={loading}
+				style={{textAlign: 'center', width: '100%', paddingTop: 100}}
+			>
+				{	
+					pageLoad ? 
+						<div className="home_container" style={{background: pageLoad ? '#fff' : ''}}>
+							<h1>{this.props.title}</h1>
+							<h1>{this.props.num}</h1>
+							<img src={require('../../img/img3.jpg')} alt=""/>
+							<button onClick={this.changeTitle}>dd</button>
+							<button onClick={this.changeNum}>+1</button>
+							<textarea defaultValue={objStr} onChange={this.textAreaChange} name="" id="" cols="30" rows="10">
+							</textarea>
+							<div>
+							</div>
+						</div> : null
+				}
+			</Spin>
 		);
 	}
 }

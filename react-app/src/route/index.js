@@ -9,12 +9,12 @@ import Bundle from './bundle.js';
 
 
 import RouterContainer from '../a_container/root/index.js';
-import Home from '../a_container/home/index.js';
-// const Home = (props) => (
-// 	<Bundle load={()=> import('../a_container/home/index.js')}>
-//     	{(Home) => <Home {...props}/>}
-// 	</Bundle>
-// );
+// import Home from '../a_container/home/index.js';
+const Home = (props) => (
+	<Bundle load={()=> import('../a_container/home/index.js')}>
+    	{(Home) => <Home {...props}/>}
+	</Bundle>
+);
 // import Car from '../a_container/car/index.js';
 const Car = (props) => (
 	<Bundle load={()=> import('../a_container/car/index.js')}>

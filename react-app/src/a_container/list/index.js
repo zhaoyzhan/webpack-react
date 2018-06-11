@@ -1,12 +1,27 @@
 import React from 'react';
 
+import {
+	Spin
+} from 'antd';
+
+
 class ListSon extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			refresh: false
+			refresh: false,
+			loading: true,
+			pageLoad: false
 		};
+	};
+	componentWillMount() {
+		setTimeout(() => {
+			this.setState({
+				loading: false,
+				pageLoad: true
+			});
+		}, 500);
 	};
 	shouldComponentUpdate(nextProps, nextState) {
 		return nextState.refresh;
@@ -41,10 +56,20 @@ class List extends React.Component {
 		this.state = {
 			num: 1,
 			refresh: false,
-			numberArray: [0, 1, 2]
+			numberArray: [0, 1, 2],
+			pageLoad: false,
+			loading: true
 		};
 	};
-	componentWillMount() {};
+	componentWillMount() {
+		setTimeout(() => {
+			this.setState({
+				pageLoad: true,
+				loading: false,
+				refresh: true
+			});
+		}, 500);
+	};
 	shouldComponentUpdate(nextProps, nextState) {
 		return nextState.refresh;
 	}
@@ -60,22 +85,35 @@ class List extends React.Component {
 		});
 	};
 	render() {
-		// console.log(this.state.num, 'render');
+		let {
+			pageLoad,
+			loading
+		} = this.state;
 		return (
-			<div 
-				style = {{margin:30, cursor: 'pointer'}}
-			>{
-              this.state.numberArray.map(
-                (number,key) => {
-                 return <ListSon
-                           key = {key}
-                           index = {key}
-                           number = {number}
-                           handleClick = {this.handleClick}/>
-                	}
-                )
-             }
-           </div>
+			<Spin 
+				size="large" 
+				spinning={loading}
+				style={{textAlign: 'center', width: '100%', paddingTop: 100}}
+			>
+				{
+					pageLoad ? 
+						<div 
+							style = {{margin:30, cursor: 'pointer'}}
+						>
+							{
+				              	this.state.numberArray.map(
+				                	(number,key) => {
+				                 		return <ListSon
+				                           key = {key}
+				                           index = {key}
+				                           number = {number}
+				                           handleClick = {this.handleClick}/>
+				                	}
+				                )
+				            }
+				        </div> : null
+			    }
+	        </Spin>
 		);
 	}
 }
