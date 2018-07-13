@@ -8,6 +8,16 @@ import store from './store/index.js';
 
 import './index.scss';
 import registerServiceWorker from './registerServiceWorker';
+import 'antd/dist/antd.css';
+import {
+	message
+} from 'antd';
+
+message.config({
+	top: 200,
+	maxCount: 3,
+});
+message.destroy();
 
 ReactDOM.render(
 	<Provider store={store}>

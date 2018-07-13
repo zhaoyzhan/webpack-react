@@ -7,14 +7,26 @@ import {
 } from 'react-router-dom';
 import Bundle from './bundle.js';
 
+import {
+	connect
+} from 'react-redux';
+
 
 import RouterContainer from '../a_container/root/index.js';
+
+const Login = (props) => (
+	<Bundle load={()=> import('../a_container/login/index.js')}>
+    	{(Login) => <Login {...props}/>}
+	</Bundle>
+);
+
 // import Home from '../a_container/home/index.js';
 const Home = (props) => (
 	<Bundle load={()=> import('../a_container/home/index.js')}>
     	{(Home) => <Home {...props}/>}
 	</Bundle>
 );
+
 // import Car from '../a_container/car/index.js';
 const Car = (props) => (
 	<Bundle load={()=> import('../a_container/car/index.js')}>
@@ -34,27 +46,56 @@ const News = (props) => (
 	</Bundle>
 );
 
+const loginFlag = () => {
+	if (sessionStorage.loginName) {
+		return true;
+	} else {
+		return false;
+	}
+};
 
 const RouterCon = () => (
 	<Router>
 		<div>
-			<RouterContainer></RouterContainer>
 			<Switch>
-				<Route exact path="/" component={Home}></Route>
-				<Route path="/home" component={Home} />
-				<Route path="/car" component={Car} />
-				<Route path="/list" component={List} />
-				<Route path="/news" component={News} />
+				<Route path="/login" component={Login}></Route>
+				<Route 
+					path="/" 
+					render={()=> (
+						loginFlag() ? 
+							<div>
+								<RouterContainer />
+								<Switch>
+									<Route 
+										exact 
+										path="/" 
+										component={Home}
+									></Route>
+									<Route path="/home" component={Home} />
+									<Route path="/car" component={Car} />
+									<Route path="/list" component={List} />
+									<Route path="/news" component={News} />
+									<Route
+										exact
+									    path="*"
+									    render={()=>(
+											<Redirect to="/home" />
+									    )}
+									/>
+								</Switch>
+							</div> : <Redirect to="/login"></Redirect>
+					)}
+				/>
 				<Route
 					exact
 				    path="*"
 				    render={()=>(
-						<Redirect to="/home" />
+						<Redirect to="/login"/>
 				    )}
 				/>
 			</Switch>
-		</div>
+		</div>		
 	</Router>
 );
 
-export default RouterCon
+export default RouterCon;

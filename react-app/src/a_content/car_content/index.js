@@ -52,7 +52,7 @@ class CarContent extends React.Component {
 		}
 	};
 	render() {
-		console.log('render执行');
+		// console.log('render执行');
 		let {
 			tag
 		} = this.state;

@@ -1,9 +1,11 @@
 import React from 'react';
 
 import {
-	Spin
+	Spin,
+	message
 } from 'antd';
 
+import ListBtnCon from '../../a_content/list_content/index.js';
 
 class ListSon extends React.Component {
 	constructor(props) {
@@ -46,6 +48,7 @@ class List extends React.Component {
 
 		this.state = {
 			num: 1,
+			numFlag: 2,
 			refresh: false,
 			numberArray: [0, 1, 2],
 			pageLoad: false,
@@ -81,22 +84,35 @@ class List extends React.Component {
 			refresh: true,
 		});
 	};
+	addClick() {
+		message.destroy();
+		message.success('ddd');
+		let {
+			num
+		} = this.state;
+		this.setState({
+			num: num + 1,
+			refresh: true
+		});
+	};
 	render() {
 		let {
 			pageLoad,
-			loading
+			loading,
+			num,
+			numFlag
 		} = this.state;
 		return (
 			<div className="main-container">
 				<Spin 
 					size="large" 
 					spinning={loading}
-					style={{textAlign: 'center', width: '100%'}}
+					style={{textAlign: 'center', width: '100%', paddingTop: 100}}
 				>
 					{
 						pageLoad ? 
 							<div 
-								style = {{margin:30, cursor: 'pointer'}}
+								style = {{padding:30, cursor: 'pointer'}}
 							>
 								{
 					              	this.state.numberArray.map(
@@ -109,6 +125,8 @@ class List extends React.Component {
 					                	}
 					                )
 					            }
+					            <h1>{num}</h1>
+					            <ListBtnCon numFlag={numFlag} addClick={this.addClick.bind(this)} />
 					        </div> : null
 				    }
 		        </Spin>

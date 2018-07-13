@@ -1,0 +1,28 @@
+.btn-con {
+	margin-top: 40px;
+}
+
+.con {
+  width: 200px;
+  height: auto;
+}
+.con li {
+  float: left;
+  width: 50%;
+}
+.con li p {
+  float: left;
+}
+.box {
+  float: left;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #fff;
+}
+.active {
+  background-color: blue; 
+}

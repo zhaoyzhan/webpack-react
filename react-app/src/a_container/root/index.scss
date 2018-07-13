@@ -1,12 +1,11 @@
 .router-main-container {
-	// background-color: red;
 	line-height: 60px;
     height: 60px;
-
 }
 
 .router-main-ul {
 	overflow: hidden;
+	margin-bottom: 0;
 }
 
 .router-main-li {
@@ -19,4 +18,10 @@
 		text-decoration: none;
 		color: #ccc;
 	}
+}
+
+.out-login {
+	float: right;
+	padding-right: 50px;
+	cursor: pointer;
 }
