@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<script type="text/javascript">
+// 	window.onload=function(){
+// var x = new Date('2014-1');  
+// var y = new Date('2014-5');  
+// var z = new Date('2014-6');  
+  
+// var arr = new Array();  
+// arr.push(x);  
+// arr.push(y);  
+// arr.push(z);  
+// arr.sort(function(a, b){  
+//     return a < b ? 1 : -1;  
+// });  
+// alert(arr[0]+"\n"+ arr[1]+"\n"+arr[2]); 
+
+// }
+
+
+      //防止页面后退
+      // window.addEventListener('popstate', function () {
+      //   window.history.pushState('forward', null, '#');
+      //   window.history.forward(1);
+      // });
+
+
+		// var arr = [1, 2, 3, 4, 5, 6]
+		// var str = "A-地区员工工程25.0^EA-地区员工造采44.0^ED-地区项目负责人造采64."
+		// console.log(arr)
+		// console.log(arr.reverse())
+		// console.log(str.replace(/\^E/g, "a").split("a"))
+		// var obj = {
+		//     "resumeInformation": {
+		//       "sex": "F",
+		//       "name": "范迎春",
+		//       "department": "造价采购部",
+		//       "postName": "地产造采综合管理地区职能负责人",
+		//       "positionLevel": "M5",
+		//       "companyLife": "13",
+		//       "postLife": "2",
+		//       "jobLife": "3",
+		//       "age": "38",
+		//       "graduationSchool": "重庆大学",
+		//       "education": "硕士研究生",
+		//       "recruitSource": "校园招聘",
+		//       "dimissionRisk": "L"
+		//     },
+		//     "companyExperience": {
+		//       "inLongfor": {
+		//         "entry_effdt": "2005-07",
+		//         "entry_descr": "预结算中心-地产造采综合管理员工",
+		//         "entry_hps_descr": "4"
+		//       },
+		//       "trs_grade_his_list": [
+		//         {
+		//           "ajustmentTime": "2005-07",
+		//           "hps_jobdescr": "地产土建工程员工",
+		//           "hps_jobgrade": "3"
+		//         },
+		//         {
+		//           "ajustmentTime": "2007-06",
+		//           "hps_jobdescr": "地产招标员工",
+		//           "hps_jobgrade": "4"
+		//         }
+		//       ],
+		//       "positionAdjustmentList": [
+		//         {
+		//           "ajustmentTime": "2011-01",
+		//           "hps_jobdescr": "地产土建造价员工",
+		//           "hps_jobgrade": "-"
+		//         },
+		//         {
+		//           "ajustmentTime": "2011-12",
+		//           "hps_jobdescr": "地产造采综合管理地区项目职能负责人",
+		//           "hps_jobgrade": "-"
+		//         }
+		//       ],
+		//       "performanceCheckList": [
+		//         {
+		//           "checkTime": "2013-01",
+		//           "performance": "B"
+		//         },
+		//         {
+		//           "checkTime": "2013-12",
+		//           "performance": "B"
+		//         },
+		//         {
+		//           "checkTime": "2012-01",
+		//           "performance": "B+"
+		//         },
+		//         {
+		//           "checkTime": "2012-12",
+		//           "performance": "B"
+		//         },
+		//         {
+		//           "checkTime": "2014-01",
+		//           "performance": "B+"
+		//         },
+		//         {
+		//           "checkTime": "2014-12",
+		//           "performance": "B+"
+		//         },
+		//         {
+		//           "checkTime": "2015-01",
+		//           "performance": "A"
+		//         },
+		//         {
+		//           "checkTime": "2015-12",
+		//           "performance": "B+"
+		//         },
+		//         {
+		//           "checkTime": "2016-01",
+		//           "performance": "B"
+		//         },
+		//         {
+		//           "checkTime": "2016-12",
+		//           "performance": "B+"
+		//         },
+		//         {
+		//           "checkTime": "2017-01",
+		//           "performance": "B"
+		//         }
+		//       ]
+		//     },
+		//     "personLabel": {
+		//       "dimissionRiskPersonLabel": "L",
+		//       "regionFlexible": "-,-",
+		//       "futureLeader": "仕官生",
+		//       "postLifePersonLabel": "2",
+		//       "remoteSupport": "-",
+		//       "duty": "-",
+		//       "specialExperience": "-",
+		//       "potentialVal": "黄",
+		//       "alternateType": "-",
+		//       "projectExperience": "A-地区员工工程25.0^EA-地区员工造采44.0^ED-地区项目负责人造采64.0",
+		//       "advantage": "-",
+		//       "weakness": "-",
+		//       "nextDevelopPlan1": "-",
+		//       "nextDevelopPlan2": "-",
+		//       "developDirection1": "-",
+		//       "developDirection2": "-"
+		//     },
+		//     "projectExperience": {
+		//       "proj_experience_list": [
+		//         {
+		//           "com_name": "重庆龙湖地产",
+		//           "position_name": "A-地区员工",
+		//           "projectNameList": [
+		//             {
+		//               "project_name": "蓝湖郡项目",
+		//               "int_exter_name": "重庆龙湖地产",
+		//               "company_nature_name": "住宅类",
+		//               "entry_name": "洋房",
+		//               "start_time": "2005-11-01",
+		//               "end_time": "2007-06-01",
+		//               "project_cycle_name": "完整周期",
+		//               "pro_key_node": "启动会（前1/2周期）^E体验区（前1/2周期）^E预售节点（前1/2周期）^E交房（后1/2周期）^E维保（后1/2周期）",
+		//               "proj_role": "主责",
+		//               "project_area_name": "B-5~10万方",
+		//               "special_experience": "-"
+		//             }
+		//           ]
+		//         },
+		//         {
+		//           "com_name": "重庆龙湖地产",
+		//           "position_name": "A-地区员工",
+		//           "projectNameList": [
+		//             {
+		//               "project_name": "-",
+		//               "int_exter_name": "重庆龙湖地产",
+		//               "company_nature_name": "-",
+		//               "entry_name": "-",
+		//               "start_time": "-",
+		//               "end_time": "-",
+		//               "project_cycle_name": "-",
+		//               "pro_key_node": "-",
+		//               "proj_role": "-",
+		//               "project_area_name": "-",
+		//               "special_experience": "-"
+		//             }
+		//           ]
+		//         },
+		//         {
+		//           "com_name": "重庆龙湖地产",
+		//           "position_name": "D-地区项目负责人",
+		//           "projectNameList": [
+		//             {
+		//               "project_name": "两江新宸",
+		//               "int_exter_name": "重庆龙湖地产",
+		//               "company_nature_name": "住宅类",
+		//               "entry_name": "别墅（批量、毛坯、高端、中端、低端）",
+		//               "start_time": "2012-10-01",
+		//               "end_time": "2016-03-31",
+		//               "project_cycle_name": "完整周期",
+		//               "pro_key_node": "启动会（前1/2周期）^E体验区（前1/2周期）^E预售节点（前1/2周期）^E交房（后1/2周期）^E维保（后1/2周期）",
+		//               "proj_role": "主责",
+		//               "project_area_name": "F-50万方以上",
+		//               "special_experience": "-"
+		//             },
+		//             {
+		//               "project_name": "春森彼岸",
+		//               "int_exter_name": "重庆龙湖地产",
+		//               "company_nature_name": "住宅类",
+		//               "entry_name": "高层/超高层",
+		//               "start_time": "2011-01-01",
+		//               "end_time": "2012-09-30",
+		//               "project_cycle_name": "后1/2周期",
+		//               "pro_key_node": "启动会（前1/2周期）^E体验区（前1/2周期）^E预售节点（前1/2周期）^E交房（后1/2周期）^E维保（后1/2周期）",
+		//               "proj_role": "主责",
+		//               "project_area_name": "E-30~50万方",
+		//               "special_experience": "-"
+		//             }
+		//           ]
+		//         },
+		//         {
+		//           "com_name": "天津龙湖地产",
+		//           "position_name": "E-地区职能负责人",
+		//           "projectNameList": [
+		//             {
+		//               "project_name": "-",
+		//               "int_exter_name": "天津龙湖地产",
+		//               "company_nature_name": "-",
+		//               "entry_name": "-",
+		//               "start_time": "-",
+		//               "end_time": "-",
+		//               "project_cycle_name": "-",
+		//               "pro_key_node": "-",
+		//               "proj_role": "-",
+		//               "project_area_name": "-",
+		//               "special_experience": "-"
+		//             }
+		//           ]
+		//         }
+		//       ]
+		//     }
+  // 		}
+
+  // 		var str = obj.personLabel.projectExperience
+  // 		var str1 = str = ""
+  // 		console.log(str1)
+  // 		var arr = str.replace(/\^E/g, "a").split("a")
+  // 		obj.personLabel.projectExperience = arr
+  // 		console.log(obj.personLabel)
+
+  		// var str = "name=zhangsan&id=123456"
+  		// var obj = new Object()
+  		// var arr = str.split("&")
+  		// for(var i= 0; i< arr.length; i++){
+  		// 	obj[arr[i].split("=")[0]] = unescape(arr[i].split("=")[1])
+  		// }
+  		// console.log(obj, arr)
+
+  		// var obj = {}, arr = []
+
+  		// obj.value = "1234"
+
+  		// console.log(obj)
+
+  		// for(var i = 0; i< 10; i++) {
+  		// 	arr.push({value:i, option: i, children: []})
+  		// 	for(var j = 0; j < 5; j++){
+  		// 		arr[i].children.push({value:j, option:j})
+  		// 	}
+  		// }
+
+  		// console.log(arr.length)
+
+  		// var str = "安能1111-哈啊哈-和恶化"
+
+  		// var arr = str.split("-")
+  		// console.log(arr)
+
+  		// var date = new Date()
+  		// console.log(date.getMonth()+1)
+  		// console.log(new Date().getFullYear())
+
+  		// var obj = {value: "123", option: "234"}
+  		// if(5>4){
+  		// 	obj.children.push({value:"123", option: "234"})
+  		// }
+  		// console.log(obj)
+
+  		// var ob = {}
+
+  // 		var obj = {}
+
+  // 		var str = ""
+		// console.log(obj != "")
+  // 		console.log(str != "")
+
+  	// var str = "北地京地区"
+  	// var newStr = str.replace(/地区/g, "区域")
+  	// console.log(newStr)
+  	// new Promise ((resolve) => {
+  	// 	setTimeout(function() {
+  	// 		console.log("开始")
+  	// 		window.history.go(0)
+  	// 		resolve()
+  	// 	}, 3000)
+  	// }).then(res=> {
+  	// 	console.log("结束")
+  	// })
+  	
+</script>
+<body>
+	<button onclick="cli()">点击</button>
+	<input type="date" class="dateSele" value="2017-11-11"></input>
+</body>
+<script type="text/javascript">
+	//抖动函数
+  	function debounce(methds, delay) {
+  		console.log("点击了000")
+  		var timer = null
+  		// console.log(methds)
+  		var ctx = this
+  		var args = arguments
+  		return function() {
+  			
+  			clearTimeout(timer) 
+  			timer = setTimeout( function() {  
+  				methds.apply(ctx, arguments)
+  			}, delay)
+  		}
+  		// console.log(delay)
+  	}
+
+  	function show () {
+  		console.log("hahaahah11")
+  	}
+  	// var debounce = new debounce()
+  	function cli () {
+  		// console.log("点击了")
+  		debounce(show, 2000)
+  	}
+
+  	//截取
+  	// var str = "2014-03-05"
+  	// var newStr = str.substring(0,7)
+  	// console.log(newStr)
+
+  	// console.log( new Date().toLocaleDateString().replace(/\//g, "-") )
+
+  	// console.log( new Date() )
+
+  	// var date01 = new Date(2018,2,1)
+  	// console.log(date01.toLocaleDateString())
+  	// var date = new Date(2017,11,1)
+  	// var newDate = date.toLocaleDateString()
+  	// var arr = newDate.split("/")
+  	// if(arr[2].length == 1 && arr[2] == "1" ) {
+  	// 	if(arr[1] == "1") {
+  	// 		arr[1] = 12
+  	// 		arr[0] = arr[0] - 1
+  	// 		arr[2] = arr[2] - 0
+  	// 	}else {
+  	// 		arr[1] = arr[1] - 1
+  	// 		arr[0] = arr[0] - 0
+  	// 		arr[2] = arr[2] - 0
+  	// 	}
+  	// }else{
+  	// 	console.log(arr[0]-2)
+  	// }
+  	// console.log(new Date().toLocaleDateString())
+  	// console.log(arr)
+
+  	// function cli() {
+  	// 	var date11 = new Date(document.getElementsByClassName("dateSele")[0].value).toLocaleDateString()
+  	// 	// console.log(document.getElementsByClassName("dateSele")[0].value)
+
+  	// 	var arr01 = date11.split("/")
+  	// 	console.log(arr01)
+	  // 	if(arr01[2].length == 1 && arr01[2] == "1" ) {
+	  // 		if(arr01[1] == "1") {
+	  // 			arr01[1] = 12
+	  // 			arr01[0] = arr01[0] - 1
+	  // 			arr01[2] = arr01[2] - 0
+	  // 		}else {
+	  // 			arr01[1] = arr01[1] - 1
+	  // 			arr01[0] = arr01[0] - 0
+	  // 			arr01[2] = arr01[2] - 0
+	  // 		}
+	  // 	}
+  	// 	// console.log(arr01)
+  	// 	// console.log(Date.now())
+  	// 	console.log(new Date(new Date().getTime()))
+  	// 	console.log(new Date(new Date().getTime()-24*60*60*1000))
+  	// 	console.log(new Date(new Date().getTime()-24*60*60*1000).toLocaleDateString())
+
+  	// 	// console.log(new Date(2016,12,1).toLocaleDateString())
+  	// }
+
+  	//排序
+  	// var arr = [1, 12, 100, 102, 300, 303, 400,200]
+  	// console.log(arr.sort(
+  	// 	function(a, b) {
+  	// 	  return a > b ? 1 
+   // 		}
+  	// ))
+
+  	//数组
+  	// var arr = Array(9).fill("1")
+
+  	// for(var i in arr) {
+  	// 	console.log(arr.hasOwnProperty(i))
+  	// }
+
+  	// var newArr = arr.slice()
+  	// newArr.push("222")
+  	// newArr[0]="222"
+  	// arr[0]="333"
+  	// console.log(arr, newArr)
+
+  	//原型链
+  	// Object.prototype.bar = "4321"
+  	// var foo = {goo: "1234"}
+
+  	// console.log(foo.hasOwnProperty("goo"))
+  	// console.log(foo.hasOwnProperty("bar"))
+
+  	//克隆
+  	//1.  slice只对数组有效
+	  	// var arr = [1,2,3,4]
+	  	// var newArr = arr.slice()
+	  	// console.log(newArr)
+	//2. Object.assign()
+		// var obj = {a:1, b:2, c: 3}
+		// var newObj01 = obj
+		// var newObj02 = Object.assign({}, obj)
+		// obj.a = "11111"
+		// obj.b = "3333"
+		// console.log(newObj01)  //{a:"11111", b:"3333", c:3}
+		// console.log(newObj02)	//{a:1, b:2, c: 3}
+
+		// var obj = {a:{d:22}, b:3, c:3}
+		// var newObj = Object.assign({}, obj)
+		// obj.a.d = "4444"
+		// obj.b = "00000"
+		// console.log(newObj)
+
+		// var obj = {a:{d:22}, b:3, c:3, e: function(){alert("123")}}
+		// // var newObj = JSON.parse(JSON.stringify(obj))
+		// // console.log(newObj)
+		// // console.log(typeof Object.prototype.toString)
+		// function cloneObj(obj) {
+		// 	var o = obj.constructor == Array ? [] : {}
+		// 	for(var i in obj) {
+		// 		if(obj.hasOwnProperty(i)) {
+		// 			o[i] = typeof obj[i] === "object" ? cloneObj(obj[i]) : obj[i];
+		// 		}
+		// 	}
+		// 	return o
+		// }
+
+		// var newObj = cloneObj(obj)
+		// newObj.b = "00000"
+		// obj.c= "09999"
+		// console.log(newObj)
+		// console.log(obj)
+		
+		// Object.prototype.b = 12
+		// var obj = {a: 12}
+
+		// console.log(obj.hasOwnProperty("b"))
+		// console.log(obj.b)
+
+		//ie取时间
+		// console.log(new Date().toLocaleDateString().replace(/\/|^\x00-\xff/g, "-").substring(0,7))
+		// var str = "2017/12/12"
+		// var newStr = "2017年12月1日"
+		// var date = new Date(2017,1,1).toLocaleDateString()
+		// // console.log(str.replace(/\/|[^x00-xff]/g, "-").substring(0, str.length-1))
+		// // console.log(date)
+
+		// function fun(data) {
+		// 	return data.replace(/\/|[^x00-xff]/g, "-").substring(data.length - 1) == "-" ? data.replace(/\/|[^x00-xff]/g, "-").substring(0, data.length - 1) : data.replace(/\/|[^x00-xff]/g, "-")
+		// }
+
+		// console.log(fun(str))
+		// var data = new Date()
+		// var str = "2017年12月24日"
+		// var newStr = " "
+		// // console.log(typeof data.toLocaleDateString())
+		// // console.log(data.toLocaleDateString())
+		// // console.log(data.toLocaleDateString().substring(0,1).charCodeAt(), "ss")
+		// var iestr = String.fromCharCode(8206)
+		// var reg = new RegExp(iestr, "g")
+		// console.log(new Date().toLocaleDateString().replace(new RegExp(String.fromCharCode(8206), "g"), "").replace(/\/|[^x00-xff]/g, "-").substring(new Date().toLocaleDateString().replace(new RegExp(String.fromCharCode(8206), "g"), "").length-1) == "-" ? new Date().toLocaleDateString().replace(new RegExp(String.fromCharCode(8206), "g"), "").replace(/\/|[^x00-xff]/g, "-").substring(0,new Date().toLocaleDateString().replace(new RegExp(String.fromCharCode(8206), "g"), "").length-1) : new Date().toLocaleDateString().replace(new RegExp(String.fromCharCode(8206), "g"), "").replace(/\/|[^x00-xff]/g, "-"))
+		// console.log(data.toLocaleDateString().replace(/\/|[^x00-xff]/g, "-"))
+</script>
+</html>

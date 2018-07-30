@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>点击</button>
+	<script type="text/javascript">
+		var btn = document.getElementsByTagName('button')[0]
+		btn.onclick = function () {
+			debounce()
+		}
+
+		function debounce(num) {
+			return function () {
+				console.log(num)
+			}
+		}
+		var debounce = debounce(10)
+
+		function foo(x) {
+		    var tmp = 3;
+		    return function () {
+		        alert(x);
+		    }
+		}
+		var bar = foo(10)
+		bar()
+
+		function show () {
+			console.log(123)
+		}
+
+		window.onkeydown = function (e) {
+			var e = e || event
+			console.log(e.keyCode)
+		}
+	</script>
+</body>
+</html>
