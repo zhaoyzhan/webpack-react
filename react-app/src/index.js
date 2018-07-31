@@ -14,8 +14,7 @@ import {
 } from 'antd';
 
 message.config({
-	top: 200,
-	maxCount: 3,
+	top: 20,
 });
 message.destroy();
 

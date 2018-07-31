@@ -51,6 +51,7 @@ class RouterContainer extends React.Component {
 					</li>
 					<li className="router-main-li"><Link to="/list" >list</Link></li>
 					<li className="router-main-li"><Link to="/news" >news</Link></li>
+					<li className="router-main-li"><Link to="/backstage" >backstage</Link></li>
 					<li className="out-login" onClick={this._outlogin}>退出登录</li>
 				</ul>
 			</div>

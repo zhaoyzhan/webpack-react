@@ -65,6 +65,13 @@ class Home extends React.Component {
 	textAreaChange = (e) => {
 		// let value = e.target.value
 	};
+	showMessage = () => {
+		let a = '';
+		a.map((index, item) => {
+			console.log(index);
+		})
+		console.log(222);
+	};
 	render() {
 		let newDefaultValue = {
 			name: 'zhangsan',
@@ -106,6 +113,7 @@ class Home extends React.Component {
 								<img src={require('../../img/img3.jpg')} alt=""/>
 								<button onClick={this.changeTitle}>dd</button>
 								<button onClick={this.changeNum}>+1</button>
+								<button onClick={this.showMessage}>+2</button>
 								<textarea defaultValue={objStr} onChange={this.textAreaChange} name="" id="" cols="30" rows="10">
 								</textarea>
 							</div> : null

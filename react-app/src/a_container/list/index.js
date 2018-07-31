@@ -5,6 +5,8 @@ import {
 	message
 } from 'antd';
 
+import axios from 'axios';
+
 import ListBtnCon from '../../a_content/list_content/index.js';
 
 class ListSon extends React.Component {
@@ -56,6 +58,11 @@ class List extends React.Component {
 		};
 	};
 	componentWillMount() {
+		axios.get('./data.json').then(res => {
+			console.log(res);
+		}).catch(err => {
+			console.log(err);
+		});
 		this.mounted = true;
 		setTimeout(() => {
 			if (this.mounted) {

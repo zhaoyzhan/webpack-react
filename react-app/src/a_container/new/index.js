@@ -79,7 +79,7 @@ class NewsFa extends React.Component {
 	};
 	shouldComponentUpdate(nextProps, nextState) {
 		return nextState.refresh;
-	}
+	};
 	handleClick = (index) => {
 		let preNumberArray = [...this.state.numberArray];
 		//把做修改的number Object先拷贝到一个新的对象中，替换原来的对象
@@ -90,6 +90,44 @@ class NewsFa extends React.Component {
 			numberArray: preNumberArray,
 			refresh: true
 		});
+	};
+	addtwo = () => {
+		console.log(this.state.refresh);
+
+		//加2
+		// this.setState({
+		// 	num: this.state.num + 1,
+		// 	refresh: true
+		// }, () => {
+		// 	this.setState({
+		// 		num: this.state.num + 1,
+		// 		refresh: true
+		// 	});
+		// });
+
+		//加2
+		// this.setState((preState, props) => ({
+		// 	num: preState.num + 1,
+		// 	refresh: true
+		// }));
+		// this.setState((preState, props) => ({
+		// 	num: preState.num + 1,
+		// 	refresh: true
+		// }));
+		// this.setState((preState, props) => ({
+		// 	num: preState.num + 1,
+		// 	refresh: true
+		// }));
+
+		//加2
+		setTimeout(() => {
+			this.setState({
+				num: this.state.num + 1
+			});
+			this.setState({
+				num: this.state.num + 1
+			});
+		}, 0)
 	};
 	render() {
 		let {
@@ -108,17 +146,21 @@ class NewsFa extends React.Component {
 						pageLoad ? 
 							<div className="news-container">
 								<img className="news-con-img" src={require('../../img/img3.jpg')} alt=""/>
-							{
-								this.state.numberArray.map(
-					                (numberObject,key) => {
-						                 return <NewsSon
-						                           key = {key}
-						                           index = {key}
-						                           numberObject ={numberObject}
-						                           handleClick ={this.handleClick}/>
-						                }
-					                )
+								{
+									this.state.numberArray.map(
+						                (numberObject,key) => {
+							                 return <NewsSon
+							                           key = {key}
+							                           index = {key}
+							                           numberObject ={numberObject}
+							                           handleClick ={this.handleClick}/>
+							                }
+						                )
 					            }
+					            <div className="numcon">
+									<p>{num}</p>
+									<button onClick={this.addtwo}>点击</button>
+					            </div>
 							</div> : null
 					}
 				</Spin>

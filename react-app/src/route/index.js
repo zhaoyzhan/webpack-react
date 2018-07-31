@@ -14,6 +14,13 @@ import {
 
 import RouterContainer from '../a_container/root/index.js';
 
+import BackStageRoot from '../a_container/backstage/root/index.js';
+
+// import BHome from '../a_container/backstage/BHome/index.js';
+// import BList from '../a_container/backstage/BList/index.js';
+// import BMap from '../a_container/backstage/BMap/index.js';
+// import BCon from '../a_container/backstage/BCon/index.js';
+
 const Login = (props) => (
 	<Bundle load={()=> import('../a_container/login/index.js')}>
     	{(Login) => <Login {...props}/>}
@@ -46,12 +53,17 @@ const News = (props) => (
 	</Bundle>
 );
 
+
 const loginFlag = () => {
 	if (sessionStorage.loginName) {
 		return true;
 	} else {
 		return false;
 	}
+};
+
+const BRConstyle = {
+	display: 'flex'
 };
 
 const RouterCon = () => (
@@ -62,26 +74,15 @@ const RouterCon = () => (
 				<Route 
 					path="/" 
 					render={()=> (
-						loginFlag() ? 
+						loginFlag() ?
 							<div>
 								<RouterContainer />
 								<Switch>
-									<Route 
-										exact 
-										path="/" 
-										component={Home}
-									></Route>
 									<Route path="/home" component={Home} />
 									<Route path="/car" component={Car} />
 									<Route path="/list" component={List} />
 									<Route path="/news" component={News} />
-									<Route
-										exact
-									    path="*"
-									    render={()=>(
-											<Redirect to="/home" />
-									    )}
-									/>
+									<Route path="/backstage" component={BackStageRoot}/>
 								</Switch>
 							</div> : <Redirect to="/login"></Redirect>
 					)}
@@ -94,8 +95,16 @@ const RouterCon = () => (
 				    )}
 				/>
 			</Switch>
-		</div>		
+		</div>
 	</Router>
 );
 
 export default RouterCon;
+
+// <Route
+// 										exact
+// 									    path="/dsafsa"
+// 									    render={()=>(
+// 											<Redirect to="/home" />
+// 									    )}
+// 									/>

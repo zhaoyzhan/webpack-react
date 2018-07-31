@@ -3,6 +3,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
+    //生成source-map, 定位错误
+    devtool: 'source-map',
     entry: {
         main: path.join(__dirname, "../src/index.js"),
         common: ['react', 'react-dom']
@@ -11,6 +13,7 @@ module.exports = {
         path: path.join(__dirname, "../build"),
         filename: 'static/js/[name].[hash:8].bundle.js',
         chunkFilename: 'static/js/[name]-[id].[hash:8].bundle.js',
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.css', '.less', '.sass', '.scss'],
