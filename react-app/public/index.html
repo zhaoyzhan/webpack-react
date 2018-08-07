@@ -37,6 +37,14 @@
       //   // 异常上报
       // };
       // throw new Error('这是一个错误');
+      //防止页面后退
+      // window.addEventListener('popstate', function () {
+      //   history.pushState({back: 1}, null, "?back=1");
+      //   window.onpopstate = function(event) {
+      //    console.log(event);
+      //     history.pushState({back: 1},null, "?back=1");
+      //   };
+      // });
     </script>
     <!--
       This HTML file is a template.

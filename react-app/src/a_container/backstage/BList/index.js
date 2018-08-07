@@ -1,14 +1,13 @@
 import React from 'react';
 
+import PublicStyle from '../backstageApi/index.js';
+
 class BList extends React.Component {
 	render() {
-		const BListStyle = {
-
-		}
 		return (
-			<div style={BListStyle} className="backStage-main">
-				BList
-			</div>
+			<PublicStyle.BackStageMainStyled className="backStage-main">
+				<h1>blist</h1>	
+			</PublicStyle.BackStageMainStyled>
 		);
 	}
 };

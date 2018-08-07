@@ -58,6 +58,8 @@ class List extends React.Component {
 		};
 	};
 	componentWillMount() {
+		let o = this.checkUserAgent();
+		console.log(o, 'ppp');
 		axios.get('./data.json').then(res => {
 			console.log(res);
 		}).catch(err => {
@@ -101,6 +103,58 @@ class List extends React.Component {
 			num: num + 1,
 			refresh: true
 		});
+	};
+	//判断终端
+	//		//判断是什么终端     ios  Android  还是pc
+	checkUserAgent() {
+		let u = navigator.userAgent,
+			app = navigator.appVersion;
+		//alert(app);
+		let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+		let isAndroid = u.indexOf("Android") > -1; //Android终端
+
+		//ios终端
+		if (isiOS) {
+			return "IOS";
+			//Android
+		} else if (isAndroid) {
+			return "Android";
+			//pc
+		} else {
+			return "PC";
+		}
+	};
+	//浏览器传参截取
+	getUrlParams() {
+		let url = window.location.href;
+		let index = url.indexOf("?");
+		let result = "";
+		if (index > 0) {
+			let params = url.substr(index + 1).split("&");
+			for (let i = 0; i < params.length; i++) {
+				let ps = params[i].split("=");
+				if (i == 0) {
+					result += "{";
+				}
+				if (i != 0) {
+					result += ",";
+				}
+				if (ps.length == 1) {
+					result += "\"" + ps[0] + "\":\"\"";
+				} else {
+					result += "\"" + ps[0] + "\":\"" + ps[1] + "\"";
+				}
+				if (i == params.length - 1) {
+					result += "}";
+				}
+			}
+		}
+		if ("" == result) {
+			return "";
+		} else {
+			return JSON.parse(result);
+		}
 	};
 	render() {
 		let {
