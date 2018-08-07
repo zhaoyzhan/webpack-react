@@ -44,7 +44,7 @@ class BHome extends React.Component {
 	render() {
 		const InputStyled = styled.input `
 			border: 1px solid #ccc;
-			background: red;
+			background: green;
 		`;
 		return (
 			<PublicStyle.BackStageMainStyled className="backStage-main">

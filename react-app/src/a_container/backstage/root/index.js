@@ -32,6 +32,12 @@ const BMap = (props) => (
 	</Bundle>
 );
 
+const StyledTest = (props) => (
+	<Bundle load={()=> import('../styledTest/index.js')}>
+		{(StyledTest)=> <StyledTest {...props}/>}
+	</Bundle>
+);
+
 class BackStageRoot extends React.Component {
 	render() {
 		let furl = this.props.match.url;
@@ -56,6 +62,7 @@ class BackStageRoot extends React.Component {
 					<li><Link to={`${furl}/blist`}>blist</Link></li>
 					<li><Link to={`${furl}/bmap`}>bmap</Link></li>
 					<li><Link to={`${furl}/bcon`}>bcon</Link></li>
+					<li><Link to={`${furl}/styledtest`}>styledtest</Link></li>
 				</ul>
 				<Route 
 					exact
@@ -68,6 +75,7 @@ class BackStageRoot extends React.Component {
 				<Route path={`${furl}/blist`} component={BList} />
 				<Route path={`${furl}/bmap`} component={BMap} />
 				<Route path={`${furl}/bcon`} component={BCon} />
+				<Route path={`${furl}/styledtest`} component={StyledTest} />
 			</div>
 		);
 	}
