@@ -18,6 +18,8 @@ class BList extends React.Component {
 			flag: num
 		})
 	};
+	//拨号
+	// location.href = "tel:10086";
 	render() {
 		const H1Styled = styled.h1 `
 		  font-size: 1.5em;
