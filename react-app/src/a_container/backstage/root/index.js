@@ -8,6 +8,8 @@ import {
 
 import Bundle from '../../../route/bundle.js';
 
+import ThreeRoot from '../threeRoot/root/index.js';
+
 const BHome = (props) => (
 	<Bundle load={()=> import('../BHome/index.js')}>
 		{(BHome)=> <BHome {...props}/>}
@@ -63,10 +65,11 @@ class BackStageRoot extends React.Component {
 					<li><Link to={`${furl}/bmap`}>bmap</Link></li>
 					<li><Link to={`${furl}/bcon`}>bcon</Link></li>
 					<li><Link to={`${furl}/styledtest`}>styledtest</Link></li>
+					<li><Link to={`${furl}/threeroot`}>threeroot</Link></li>
 				</ul>
 				<Route 
 					exact
-					path="/backstage"
+					path={furl}
 					render={()=>(
 						<Redirect to={`${furl}/bhome`} />
 					)}
@@ -76,6 +79,7 @@ class BackStageRoot extends React.Component {
 				<Route path={`${furl}/bmap`} component={BMap} />
 				<Route path={`${furl}/bcon`} component={BCon} />
 				<Route path={`${furl}/styledtest`} component={StyledTest} />
+				<Route path={`${furl}/threeroot`} component={ThreeRoot} />
 			</div>
 		);
 	}

@@ -16,8 +16,12 @@ const DIV = styled.div `
 const SPAN = styled.span ``;
 const P = styled.p ``;
 
-const Button = styled.Button `
-	
+const Button = styled.button `
+	width: 100px;
+	height: 30px;
+	fon-size: 20px;
+	line-height: 30px;
+	corsor: pointer;
 `;
 
 export default {
@@ -25,5 +29,6 @@ export default {
 	LI,
 	DIV,
 	SPAN,
-	P
+	P,
+	Button
 }

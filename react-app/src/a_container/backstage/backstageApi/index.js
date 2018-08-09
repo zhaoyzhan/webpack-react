@@ -7,6 +7,7 @@ const BackStageMainStyled = styled.div `
 	top: 60px;
 	bottom: 0;
 	padding: 20px;
+	overflow-y: auto;
 `;
 
 const PStyled = styled.div `

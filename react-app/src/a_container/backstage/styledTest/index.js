@@ -13,6 +13,7 @@ class StyledTest extends React.Component {
 		super(props);
 
 		this.state = {
+			refresh: false,
 			dataList: [{
 				name: 'name1'
 			}, {
@@ -31,24 +32,54 @@ class StyledTest extends React.Component {
 				name: 'name8'
 			}, {
 				name: 'name9'
+			}, {
+				name: 'name10'
+			}, {
+				name: 'name11'
+			}, {
+				name: 'name12'
+			}, {
+				name: 'name13'
+			}, {
+				name: 'name14'
 			}],
 			flag: 0,
-			propsVal: 'choseY'
+			propsVal: 'choseY',
+			ZZFlag: false,
 		};
 	};
 	componentWillMount() {
 		// console.log('styled');
 	};
+	shouldComponentUpdate(nextProps, nextState) {
+		return nextState.refresh;
+	};
 	IetmClick = (num) => {
 		this.setState({
-			flag: num
+			flag: num,
+			refresh: true
 		})
+	};
+	//显示遮罩层
+	showZZC = () => {
+		this.setState({
+			ZZFlag: true,
+			refresh: true
+		});
+	};
+	//关闭遮罩层
+	closeZZ = () => {
+		this.setState({
+			ZZFlag: false,
+			refresh: true
+		});
 	};
 	render() {
 		const {
 			dataList,
 			propsVal,
-			flag
+			flag,
+			ZZFlag
 		} = this.state;
 
 		const Button = ({
@@ -114,9 +145,56 @@ class StyledTest extends React.Component {
 		//   ${media.tablet`background: mediumseagreen;`}
 		//   ${media.phone`background: palevioletred;`}
 		// `;
+		const ZZstyle = {
+			position: 'fixed',
+			left: 0,
+			top: 0,
+			bottom: 0,
+			right: 0,
+			background: 'rgba(0, 0, 0, .4)',
+		};
+		const ZZSpan = {
+			position: 'absolute',
+			right: '20px',
+			top: '50px',
+			width: '40px',
+			height: '40px',
+			border: '1px solid #fff',
+			borderRadius: '50%',
+			cursor: 'pointer',
+			transform: 'rotateZ(-45deg)',
+		};
+		const oneI = {
+			position: 'absolute',
+			height: '60%',
+			borderLeft: '1px solid #fff',
+			left: '50%',
+			top: '50%',
+			transform: 'translate(-50%, -50%)',
+		};
+		const twoI = {
+			position: 'absolute',
+			width: '60%',
+			borderBottom: '1px solid #fff',
+			left: '50%',
+			top: '50%',
+			transform: 'translate(-50%, -50%)',
+		};
 		return (
 			<PublicStyle.BackStageMainStyled>
+				{
+					ZZFlag ? 
+						<div style={ZZstyle}>
+							<span style={ZZSpan} onClick={this.closeZZ}>
+								<i style={oneI}></i>
+								<i style={twoI}></i>
+							</span>
+						</div> 
+						: null
+				}
 				<Rotate>&lt;88888 &gt;</Rotate>
+				<br/>
+				<StyledTestCon.Button onClick={this.showZZC}>显示遮罩层</StyledTestCon.Button>
 				<StyledTestCon.UL>
 					{
 						dataList && dataList.length > 0 ? 
