@@ -10,7 +10,7 @@ const changeTitle = (state, action) => {
 	const {
 		products
 	} = action;
-	console.log(products);
+	// console.log(products);
 	return state;
 }
 
@@ -19,7 +19,7 @@ const changeNum = (state, action) => {
 	const {
 		products
 	} = action;
-	console.log(products);
+	// console.log(products);
 	return Object.assign({}, state, {
 		num: state.num + 1
 	});

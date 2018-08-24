@@ -1,3 +1,56 @@
+/**
+	// (function() {
+	// 	this.x = '1234';
+	// }).call(this);
+
+	// function fun(num) {
+	// 	this.x = num;
+	// }
+	// var obj = {};
+	// fun.apply(obj, [44532]);
+	// console.log(window.x);
+	// console.log(obj.x);
+
+	// var b = new fun(4331);
+	// console.log(window.x);
+	// let obj = {
+	// 	n: 22,
+	// 	h: '222',
+	// 	f: function() {
+
+	// 	}
+	// };
+	// (function a(xx, yy) {
+	//     console.log(xx, yy);
+	//     console.log(this, 'this');
+	//     console.log(arguments);
+	// }).call(obj, 4, 5);
+
+	// (function a(xx, yy) {
+	//     console.log(xx, yy);
+	//     console.log(this, 'this');
+	//     console.log(arguments);
+	// })(1, 3);
+
+	// var obj = {};
+	// a.apply(obj, [5, 55]);
+	// a.call(obj, 5, 55);
+
+	// a.apply(null, [5, 55]);
+	// a.call(null, 5, 55);
+
+
+	// let b = {
+	// 	x: 123,
+	// 	f: function() {
+	// 		console.log(this, 'this');
+	// 	}
+	// }
+	// a();
+	// b.f();
+*/
+
+
 import React from 'react';
 
 import {

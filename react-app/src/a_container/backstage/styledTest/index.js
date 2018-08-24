@@ -54,7 +54,7 @@ class StyledTest extends React.Component {
 	shouldComponentUpdate(nextProps, nextState) {
 		return nextState.refresh;
 	};
-	IetmClick = (num) => {
+	IetmClick = (num, obj) => {
 		this.setState({
 			flag: num,
 			refresh: true
@@ -199,7 +199,7 @@ class StyledTest extends React.Component {
 					{
 						dataList && dataList.length > 0 ? 
 							dataList.map((item, i)=> (
-								<StyledTestCon.LI choseFlag={flag === i ? propsVal : ''} onClick={()=>this.IetmClick(i)} key={i}>{item.name}</StyledTestCon.LI>
+								<StyledTestCon.LI choseFlag={flag === i ? propsVal : ''} onClick={()=>this.IetmClick(i, this)} key={i}>{item.name}</StyledTestCon.LI>
 							)) : ''
 					}
 				</StyledTestCon.UL>
