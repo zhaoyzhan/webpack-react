@@ -10,6 +10,8 @@ import ThreeRootOne from '../one/index.js';
 import ThreeRootTwo from '../two/index.js';
 import ThreeRootThree from '../three/index.js';
 
+import ThreeRootFour from '../four/index.js';
+
 class ThreeRootCon extends React.Component {
 	render() {
 		const furl = this.props.match.url;
@@ -36,6 +38,7 @@ class ThreeRootCon extends React.Component {
 					<li style={threeRUlLi}><Link to={`${furl}/one`}>one</Link></li>
 					<li style={threeRUlLi}><Link to={`${furl}/two`}>two</Link></li>
 					<li style={threeRUlLi}><Link to={`${furl}/three`}>three</Link></li>
+					<li style={threeRUlLi}><Link to={`${furl}/four`}>four</Link></li>
 				</ul>
 				<Route 
 					exact
@@ -47,6 +50,7 @@ class ThreeRootCon extends React.Component {
 				<Route path={`${furl}/one`} component={ThreeRootOne} />
 				<Route path={`${furl}/two`} component={ThreeRootTwo} />
 				<Route path={`${furl}/three`} component={ThreeRootThree} />
+				<Route path={`${furl}/four`} component={ThreeRootFour} />
 			</div>
 		);
 	}

@@ -12,7 +12,9 @@ class ThreeRootThree extends React.Component {
 			overflowY: 'auto'
 		};
 		return (
-			<div style={threeMainContent}>three</div>
+			<div style={threeMainContent}>
+				<img src={'http://zhansingsong.github.io/lazyimg/22.4582fc71.jpg'} alt=""/>
+			</div>
 		);
 	}
 }
