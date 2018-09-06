@@ -11,8 +11,12 @@ import ThreeRootTwo from '../two/index.js';
 import ThreeRootThree from '../three/index.js';
 
 import ThreeRootFour from '../four/index.js';
+import ThreeRootFive from '../five/index.js';
 
 class ThreeRootCon extends React.Component {
+	componentWillMount() {
+		// console.log(ThreeRootFive);
+	};
 	render() {
 		const furl = this.props.match.url;
 		const threeRootContainerStyle = {
@@ -39,6 +43,7 @@ class ThreeRootCon extends React.Component {
 					<li style={threeRUlLi}><Link to={`${furl}/two`}>two</Link></li>
 					<li style={threeRUlLi}><Link to={`${furl}/three`}>three</Link></li>
 					<li style={threeRUlLi}><Link to={`${furl}/four`}>four</Link></li>
+					<li style={threeRUlLi}><Link to={`${furl}/five`}>five</Link></li>
 				</ul>
 				<Route 
 					exact
@@ -51,6 +56,7 @@ class ThreeRootCon extends React.Component {
 				<Route path={`${furl}/two`} component={ThreeRootTwo} />
 				<Route path={`${furl}/three`} component={ThreeRootThree} />
 				<Route path={`${furl}/four`} component={ThreeRootFour} />
+				<Route path={`${furl}/five`} component={ThreeRootFive} />
 			</div>
 		);
 	}
