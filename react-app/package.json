@@ -5,6 +5,7 @@
   "dependencies": {
     "antd": "^3.4.0",
     "axios": "^0.18.0",
+    "jquery": "^3.3.1",
     "node-sass": "^4.8.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -15,7 +16,8 @@
     "remove": "^0.1.5",
     "styled-components": "^3.3.3",
     "url-loader": "^1.0.1",
-    "velocity-animate": "^1.5.2"
+    "velocity-animate": "^1.5.2",
+    "whatwg-fetch": "^2.0.4"
   },
   "scripts": {
     "start": "webpack-dev-server --hot --inline --color --hot --config ./webpack/webpack.dev.config.js",

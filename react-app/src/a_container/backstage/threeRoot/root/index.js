@@ -6,12 +6,21 @@ import {
 	Route
 } from 'react-router-dom';
 
+import Bundle from '../../../../route/bundle.js';
+
 import ThreeRootOne from '../one/index.js';
 import ThreeRootTwo from '../two/index.js';
 import ThreeRootThree from '../three/index.js';
 
 import ThreeRootFour from '../four/index.js';
-import ThreeRootFive from '../five/index.js';
+
+const ThreeRootFive = (props) => (
+	<Bundle load={()=> import('../five/index.js')}>
+		{(ThreeRootFive)=> <ThreeRootFive {...props}/>}
+	</Bundle>
+);
+
+// import ThreeRootFive from '../five/index.js';
 
 class ThreeRootCon extends React.Component {
 	componentWillMount() {

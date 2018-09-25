@@ -50,8 +50,39 @@
 	// b.f();
 */
 
+/**
+*
+* h5 ios端 键盘遮挡输入框解决方案
+*
+var target = this;
+
+try {
+	var u = navigator.userAgent,
+		app = navigator.appVersion;
+	var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端  
+	if (isiOS) {
+		// window.setTimeout(function() {
+		//2018-2-8修改ios 键盘弹出输入框不见的bug	
+		// window.scrollTo(0, document.body.clientHeight);
+		// }, 100);
+
+		//解决ios遮挡输入框的问题
+		document.querySelector('body').style.height = '9999px';
+
+		setTimeout(function() {
+			//要让input移到顶部，需要把body的scrollTop设置成input距离页面顶部的距离。    
+			document.body.scrollTop = document.documentElement.scrollTop = document.querySelector('#sendMsg').getBoundingClientRect().top + pageYOffset - 5;
+		}, 50);
+	}
+} catch (e) {}
+$('.msg-container').scrollTop($('.msg-container')[0].scrollHeight);
+
+*/
+
 
 import React from 'react';
+
+import axios from 'axios';
 
 import {
 	PropTypes as P
@@ -81,6 +112,9 @@ const mapDispatches = (dispatch) => ({
 	fn: {
 		changeNum: (v) => {
 			dispatch(TodoAction.changeNum(v));
+		},
+		changeTitle: (v) => {
+			dispatch(TodoAction.changeTitle(v));
 		}
 	},
 });
@@ -95,6 +129,7 @@ class Home extends React.Component {
 		};
 	}
 	componentDidMount() {
+
 		this.mounted = true;
 		setTimeout(() => {
 			if (this.mounted) {
@@ -104,6 +139,8 @@ class Home extends React.Component {
 				});
 			}
 		}, 500);
+		// console.log(this.props);
+		this.props.fn.changeTitle(123456);
 	}
 	componentWillMount() {
 

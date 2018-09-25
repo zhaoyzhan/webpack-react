@@ -4,6 +4,12 @@ import {
 	Redirect
 } from 'react-router-dom';
 
+import {
+	message
+} from 'antd';
+
+import axios from 'axios';
+
 class Login extends React.Component {
 	constructor(props) {
 		super(props);
@@ -33,12 +39,32 @@ class Login extends React.Component {
 	};
 	_login = () => {
 		let loginName = this.state.nameEn;
+		let that = this;
 		if (loginName !== '') {
-			sessionStorage.setItem('loginName', loginName);
-			this.setState({
-				refresh: true,
-				loginFlag: true
-			});
+			axios.post('http://localhost:8000/postData', JSON.stringify({
+					name: loginName
+				}), {
+					headers: {
+						'Content-Type': 'application/json;charset=utf-8'
+					}
+				})
+				.then(function(res) {
+					message.destroy();
+					if (res.data.dddd) {
+						message.success('登陆成功');
+						sessionStorage.setItem('loginName', loginName);
+						that.setState({
+							refresh: true,
+							loginFlag: true
+						});
+					} else {
+						message.error('用户名不存在');
+					}
+				})
+				.catch(function(err) {
+					console.log(err)
+				});
+
 		}
 	};
 	//验证码
@@ -107,7 +133,7 @@ class Login extends React.Component {
 					<div>
 						<span>验证码: </span><input id="checkpass" type="text" />
 					</div>
-					<div className="chechbox" style={cbStyle`}>
+					<div className="chechbox" style={cbStyle}>
 						<div className="code" style={codeStyle} id="checkCode" onClick={this.createCode} >{checkword}</div>
 						<a href="#" onClick={this.createCode}>看不清换一张</a>
 					</div>
